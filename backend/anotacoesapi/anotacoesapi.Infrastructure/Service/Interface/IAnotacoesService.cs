@@ -8,9 +8,10 @@ namespace anotacoesapi.Infrastructure.Service.Interface
 {
     public interface IAnotacoesService
     {
-        public Task<object> GetAll();
+        public Task<List<AnotacoesModel>> GetAll();
         public Task<long> Create(AnotacoesModel anotacoes);
         public Task<int> Update(AnotacoesModel anotacoes);
         public Task<int> Delete(long id);
+        public Task<AnotacoesModel> GetById(long id);
     }
 }

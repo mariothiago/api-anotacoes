@@ -27,7 +27,7 @@ namespace anotacoesapi.Infrastructure.Service
             return await _repository.Delete(id);
         }
 
-        public async Task<object> GetAll()
+        public async Task<List<AnotacoesModel>> GetAll()
         {
             return await _repository.GetAll();
         }
@@ -35,6 +35,11 @@ namespace anotacoesapi.Infrastructure.Service
         public async Task<int> Update(AnotacoesModel anotacoes)
         {
             return await _repository.Update(anotacoes);
+        }
+
+        public async Task<AnotacoesModel> GetById(long id)
+        {
+            return await _repository.GetById(id);
         }
     }
 }

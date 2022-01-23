@@ -4,6 +4,8 @@
     {
         internal static string GetAll = $@"SELECT * FROM anotacoes";
 
+        internal static string GetById = $@"SELECT id, titulo, texto FROM anotacoes WHERE ID = @id";
+
         internal static string Create = $@"INSERT INTO anotacoes (
                                             titulo, 
                                             texto) 

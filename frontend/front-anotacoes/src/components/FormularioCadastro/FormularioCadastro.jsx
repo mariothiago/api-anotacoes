@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./estilo.css";
+import axios from "axios";
 class FormularioCadastro extends Component {
-
+  state = {
+    nota: []
+  }
   constructor(props) {
     super(props);
     this.titulo = "";
@@ -21,7 +24,17 @@ class FormularioCadastro extends Component {
   _criarNota(evento) {
     evento.preventDefault();
     evento.stopPropagation();
-    this.props.criarNota(this.titulo, this.texto);
+    const nota = {
+      titulo: this.state.titulo,
+      texto: this.state.texto
+    }
+
+    axios.post(`https://localhost:5001/api/Anotacoes/criar`, { nota })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        this.setState(nota);
+      })
   }
 
   render() {

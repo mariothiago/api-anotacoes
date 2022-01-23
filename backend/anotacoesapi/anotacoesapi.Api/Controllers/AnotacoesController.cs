@@ -19,8 +19,30 @@ namespace anotacoesapi.Api.Controllers
             _anotacaoService = service;
         }
 
+        //GET
+        [HttpGet("listar-por-id")]
+        public async Task<IActionResult> GetById([FromQuery]long id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            try
+            {
+                var result = await _anotacaoService.GetById(id);
+
+                if (result != null)
+                    return Ok(result);
+
+                else
+                    return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
         // GET
-        [HttpGet("listar")]
+        [HttpGet("listar-todas")]
         public async Task <IActionResult> GetAllAnotations()
         {
             if (!ModelState.IsValid)
@@ -69,7 +91,7 @@ namespace anotacoesapi.Api.Controllers
             {
                 var result = await _anotacaoService.Update(anotacoes);
 
-                if (result != null)
+                if (result > 0)
                     return Ok(result);
 
                 else

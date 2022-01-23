@@ -1,5 +1,6 @@
 ﻿using anotacoesapi.Infrastructure.Model;
 using anotacoesapi.Infrastructure.Service;
+using anotacoesapi.Infrastructure.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net;
@@ -11,9 +12,9 @@ namespace anotacoesapi.Api.Controllers
     [ApiController]
     public class AnotacoesController : Controller
     {
-        private AnotacoesService _anotacaoService { get; set; }
+        private IAnotacoesService _anotacaoService { get; set; }
 
-        public AnotacoesController(AnotacoesService service)
+        public AnotacoesController(IAnotacoesService service)
         {
             _anotacaoService = service;
         }
@@ -46,7 +47,7 @@ namespace anotacoesapi.Api.Controllers
             {
                 var result = await _anotacaoService.Create(notas);
 
-                if (result != null)
+                if (result > 0)
                     return Ok(result);
                 else
                     return BadRequest();
@@ -91,7 +92,7 @@ namespace anotacoesapi.Api.Controllers
             {
                 var result = await _anotacaoService.Delete(id);
 
-                if (result != null)
+                if (result > 0)
                     return Ok(result);
 
                 else

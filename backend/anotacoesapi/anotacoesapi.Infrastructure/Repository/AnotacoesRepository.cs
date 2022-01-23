@@ -14,16 +14,18 @@ namespace anotacoesapi.Infrastructure.Repository
     public class AnotacoesRepository : IAnotacoesRepository
     {
         private IConfiguration _configuration;
+
         public AnotacoesRepository(IConfiguration config)
         {
             _configuration = config;
         }
+
         public async Task<int> Create(AnotacoesModel anotacoes)
         {
             using (var connection = new MySqlConnection(
                 _configuration.GetConnectionString("DefaultConnection")))
             {
-                return await connection.ExecuteAsync(AnotacoesScript.Create);
+                return await connection.ExecuteAsync(AnotacoesScript.Create, anotacoes);
             }
         }
 
@@ -32,16 +34,16 @@ namespace anotacoesapi.Infrastructure.Repository
             using (var connection = new MySqlConnection(
                 _configuration.GetConnectionString("DefaultConnection")))
             {
-                return await connection.ExecuteAsync(AnotacoesScript.Delete);
+                return await connection.ExecuteAsync(AnotacoesScript.Delete, id);
             }
         }
 
-        public async Task<IEnumerable<AnotacoesModel>> GetAll()
+        public async Task<object> GetAll()
         {
             using (var connection = new MySqlConnection(
                 _configuration.GetConnectionString("DefaultConnection")))
             {
-                return (IEnumerable<AnotacoesModel>)await connection.QueryAsync(AnotacoesScript.GetAll);
+                return await connection.QuerySingleOrDefaultAsync(AnotacoesScript.GetAll);
             }
         }
 
@@ -50,7 +52,7 @@ namespace anotacoesapi.Infrastructure.Repository
             using (var connection = new MySqlConnection(
                 _configuration.GetConnectionString("DefaultConnection")))
             {
-                return await connection.ExecuteAsync(AnotacoesScript.Update);
+                return await connection.ExecuteAsync(AnotacoesScript.Update, anotacoes);
             }
         }
     }

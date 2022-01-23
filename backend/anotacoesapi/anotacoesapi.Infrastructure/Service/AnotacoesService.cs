@@ -1,6 +1,7 @@
 ﻿using anotacoesapi.Infrastructure.Model;
 using anotacoesapi.Infrastructure.Repository;
 using anotacoesapi.Infrastructure.Service.Interface;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,28 +12,29 @@ namespace anotacoesapi.Infrastructure.Service
     public class AnotacoesService : IAnotacoesService
     {
         private AnotacoesRepository _repository { get; set; }
-        public AnotacoesService()
+        public AnotacoesService(IConfiguration config)
         {
-            _repository = new AnotacoesRepository();
+            _repository = new AnotacoesRepository(config);
         }
+
         public async Task<long> Create(AnotacoesModel anotacoes)
         {
             return await _repository.Create(anotacoes);
         }
 
-        public Task<int> Delete(long id)
+        public async Task<int> Delete(long id)
         {
-            throw new NotImplementedException();
+            return await _repository.Delete(id);
         }
 
-        public Task<IEnumerable<AnotacoesModel>> GetAll()
+        public async Task<object> GetAll()
         {
-            throw new NotImplementedException();
+            return await _repository.GetAll();
         }
 
-        public Task<int> Update(AnotacoesModel anotacoes)
+        public async Task<int> Update(AnotacoesModel anotacoes)
         {
-            throw new NotImplementedException();
+            return await _repository.Update(anotacoes);
         }
     }
 }

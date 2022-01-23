@@ -8,7 +8,7 @@ namespace anotacoesapi.Infrastructure.Repository.Interface
 {
     public interface IAnotacoesRepository
     {
-        public Task<IEnumerable<AnotacoesModel>> GetAll();
+        public Task<object> GetAll();
         public Task<int> Create(AnotacoesModel anotacoes);
         public Task<int> Update(AnotacoesModel anotacoes);
         public Task<int> Delete(long id);

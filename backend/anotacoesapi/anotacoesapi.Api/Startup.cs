@@ -1,4 +1,6 @@
 using anotacoesapi.Infrastructure.Database;
+using anotacoesapi.Infrastructure.Service;
+using anotacoesapi.Infrastructure.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.Swagger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +31,25 @@ namespace anotacoesapi.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IAnotacoesService, AnotacoesService>();
+
             services.AddDbContext<ApplicationDBContext>(options => options.UseMySql(
                 Configuration.GetConnectionString("DefaultConnection"), 
-                new MySqlServerVersion(new Version(8, 0, 1)))
+                new MySqlServerVersion(new Version(8, 0, 2)))
             );
             services.AddControllers();
+
+            // Configurando o serviço de documentação do Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "API de Anotações",
+                        Version = "v1",
+                        Description = "Exemplo de API REST criada com o ASP.NET Core"
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +65,15 @@ namespace anotacoesapi.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // Ativando middlewares para uso do Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "API Rest");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseEndpoints(endpoints =>
             {

@@ -29,11 +29,9 @@ class FormularioCadastro extends Component {
       texto: this.state.texto
     }
 
-    axios.post(`https://localhost:5001/api/Anotacoes/criar`, { nota })
+    axios.post(`https://localhost:5001/api/Anotacoes/criar`, this.state)
       .then(res => {
         console.log(res);
-        console.log(res.data);
-        this.setState(nota);
       })
   }
 

@@ -7,11 +7,11 @@ class ListaDeNotas extends Component {
     notasListadas: []
   }
   componentDidMount() {
-    axios.get(`https://localhost:5001/api/Anotacoes/listar`)
+    axios.get(`https://localhost:5001/api/Anotacoes/listar-todas`)
       .then(res => {
         const notasListadas = res.data;
         this.setState({ notasListadas })
-        console.log(notasListadas);
+        console.log(res);
       })
   }
   render() {

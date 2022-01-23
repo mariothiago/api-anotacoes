@@ -20,26 +20,26 @@ namespace anotacoesapi.Api.Controllers
         }
 
         //GET
-        [HttpGet("listar-por-id")]
-        public async Task<IActionResult> GetById([FromQuery]long id)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            try
-            {
-                var result = await _anotacaoService.GetById(id);
+        //[HttpGet("listar-por-id")]
+        //public async Task<IActionResult> GetById([FromQuery]long id)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
+        //    try
+        //    {
+        //        var result = await _anotacaoService.GetById(id);
 
-                if (result != null)
-                    return Ok(result);
+        //        if (result != null)
+        //            return Ok(result);
 
-                else
-                    return BadRequest();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
+        //        else
+        //            return BadRequest();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+        //    }
+        //}
 
         // GET
         [HttpGet("listar-todas")]

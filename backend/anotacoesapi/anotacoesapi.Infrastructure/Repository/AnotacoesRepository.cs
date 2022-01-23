@@ -38,23 +38,23 @@ namespace anotacoesapi.Infrastructure.Repository
             }
         }
 
-        public async Task<List<AnotacoesModel>> GetAll()
+        public async Task<IEnumerable<AnotacoesModel>> GetAll()
         {
             using (var connection = new MySqlConnection(
                 _configuration.GetConnectionString("DefaultConnection")))
             {
-                return (List<AnotacoesModel>)await connection.QueryAsync(AnotacoesScript.GetAll);
+                return (List<AnotacoesModel>)await connection.QueryAsync<AnotacoesModel>(AnotacoesScript.GetAll);
             }
         }
 
-        public async Task<AnotacoesModel> GetById(long id)
-        {
-            using (var connection = new MySqlConnection(
-                _configuration.GetConnectionString("DefaultConnection")))
-            {
-                return await connection.QuerySingleOrDefault(AnotacoesScript.GetById, id);
-            }
-        }
+        //public async Task<AnotacoesModel> GetById(long id)
+        //{
+        //    using (var connection = new MySqlConnection(
+        //        _configuration.GetConnectionString("DefaultConnection")))
+        //    {
+        //        return await connection.QueryFirstAsync<AnotacoesModel>(AnotacoesScript.GetById, id);
+        //    }
+        //}
 
         public async Task<int> Update(AnotacoesModel anotacoes)
         {

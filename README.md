@@ -20,6 +20,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [ ] Deploy no Vercel App
 
 :heavy_check_mark: O que já foi implementado: :heavy_check_mark:
--[x] Front end seguindo curso React - Entendendo a biblioteca da Alura
--[x] Back end seguindo os padrões de projeto aprendidos no dia a dia
--[x] Início de ligação de front end e back end
+- [x] Front end seguindo curso React - Entendendo a biblioteca da Alura
+- [x] Back end seguindo os padrões de projeto aprendidos no dia a dia
+- [x] Início de ligação de front end e back end
+- [x] Construção de consultas do banco de dados

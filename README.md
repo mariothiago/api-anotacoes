@@ -5,11 +5,11 @@
 API para salvar anotações de usuário desenvolvida em React JS e C# utilizando conhecimentos adquiridos em cursos da Alura e demais aprendizados
 
 ### 🛠 Tecnologias
-- [React] (https://pt-br.reactjs.org/)
-- [ASPNET Core] (https://dotnet.microsoft.com/en-us/apps/aspnet)
-- [Dapper]
-- [MySQL] (https://www.mysql.com/)
-- [Swagger] (https://swagger.io/)
+- [React](https://pt-br.reactjs.org/)
+- [ASPNET Core](https://dotnet.microsoft.com/en-us/apps/aspnet)
+- Dapper - ORM
+- [MySQL](https://www.mysql.com/)
+- [Swagger](https://swagger.io/)
 
 :construction: Ajustes e melhorias :construction:
 

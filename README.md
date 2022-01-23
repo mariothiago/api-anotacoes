@@ -1,5 +1,5 @@
 <h4 align="center"> 
-	🚧  React Select 🚀 Em construção...  🚧
+	🚧  api-anotações 🚀 Em construção...  🚧
 </h4>
 
 API para salvar anotações de usuário desenvolvida em React JS e C# utilizando conhecimentos adquiridos em cursos da Alura e demais aprendizados
@@ -14,7 +14,7 @@ API para salvar anotações de usuário desenvolvida em React JS e C# utilizando
 
 :construction: Ajustes e melhorias :construction:
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
--[ ] Implementação em axios do método POST na tela para criação de nova anotação
+- [ ] Implementação em axios do método POST na tela para criação de nova anotação
 - [ ] Implementação de edição e exclusão de anotação
 - [ ] Ajuste de interface - Tornando mais amigável
 - [ ] Deploy no Vercel App

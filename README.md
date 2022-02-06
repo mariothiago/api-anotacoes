@@ -16,10 +16,10 @@ API para salvar anotações de usuário desenvolvida em React JS e C# utilizando
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
 - [ ] Implementação em axios do método POST na tela para criação de nova anotação
 - [ ] Implementação de edição e exclusão de anotação
-- [ ] Implementação de Login para acesso de vários usuários
 - [ ] Testes unitários e de integração no backend utilizando XUnit
 - [ ] Ajuste de interface - Tornando mais amigável
 - [ ] Deploy no Vercel App
+- [ ] Implementação de Login para acesso de vários usuários
 
 :heavy_check_mark: O que já foi implementado: :heavy_check_mark:
 - [x] Front end seguindo curso React - Entendendo a biblioteca da Alura

@@ -5,8 +5,8 @@ class FormularioCadastro extends Component {
   state = {
     nota: []
   }
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.titulo = "";
     this.texto = "";
   }
@@ -24,35 +24,34 @@ class FormularioCadastro extends Component {
   _criarNota(evento) {
     evento.preventDefault();
     evento.stopPropagation();
-    const nota = {
-      titulo: this.state.titulo,
-      texto: this.state.texto
-    }
 
-    axios.post(`https://localhost:5001/api/Anotacoes/criar`, this.state)
+    axios.post(`https://localhost:5001/api/Anotacoes/criar`, this.nota)
       .then(res => {
+        const notaCriada = res.data;
+        this.setState({ notaCriada })
+        console.log(notaCriada);
         console.log(res);
       })
   }
 
   render() {
     return (
-      <form className="form-cadastro "
+      <form className="form-cadastro"
         onSubmit={this._criarNota.bind(this)}
       >
         <input
           type="text"
           placeholder="Título"
           className="form-cadastro_input"
-          onChange={this._handlerMudancaTitutlo.bind(this)}
+          onChange={this.state.titulo}
         />
         <textarea
           rows={15}
           placeholder="Escreva sua nota..."
           className="form-cadastro_input"
-          onChange={this._handlerMudancaTexto.bind(this)}
+          onChange={this.state.texto}
         />
-        <button className="form-cadastro_input form-cadastro_submit">
+        <button className="form-cadastro_input form-cadastro_submit" onClick={this._criarNota}>
           Criar Nota
         </button>
       </form>

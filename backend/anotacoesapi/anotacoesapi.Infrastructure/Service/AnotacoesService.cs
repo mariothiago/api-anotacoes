@@ -36,10 +36,5 @@ namespace anotacoesapi.Infrastructure.Service
         {
             return await _repository.Update(anotacoes);
         }
-
-        //public async Task<AnotacoesModel> GetById(long id)
-        //{
-        //    return await _repository.GetById(id);
-        //}
     }
 }

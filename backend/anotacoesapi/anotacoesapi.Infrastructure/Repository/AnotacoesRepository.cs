@@ -47,15 +47,6 @@ namespace anotacoesapi.Infrastructure.Repository
             }
         }
 
-        //public async Task<AnotacoesModel> GetById(long id)
-        //{
-        //    using (var connection = new MySqlConnection(
-        //        _configuration.GetConnectionString("DefaultConnection")))
-        //    {
-        //        return await connection.QueryFirstAsync<AnotacoesModel>(AnotacoesScript.GetById, id);
-        //    }
-        //}
-
         public async Task<int> Update(AnotacoesModel anotacoes)
         {
             using (var connection = new MySqlConnection(
